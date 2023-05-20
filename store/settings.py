@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ['*']
 
 
 # Application definition
-"""Необходио добавлять новые приложения в каталог ниже"""
+"""Необходимо добавлять новые приложения в каталог ниже"""
 
 INSTALLED_APPS = [
     'django.contrib.admin',
