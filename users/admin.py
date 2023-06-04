@@ -1,6 +1,6 @@
 from django.contrib import admin
-from products.models import ProductCategory, Product
+
+from users.models import User
 
 "Регистрация моделей для добавления данных через админ панель сайта"
-admin.site.register(Product)
-admin.site.register(ProductCategory)
+admin.site.register(User)
