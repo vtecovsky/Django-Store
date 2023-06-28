@@ -21,11 +21,10 @@ from products.views import index, products
 from store import settings
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', index, name='index'),
-    path('products/', include('products.urls', namespace='products')),
-    path('users/', include('users.urls', namespace='users'))
-
+    path("admin/", admin.site.urls),
+    path("", index, name="index"),
+    path("products/", include("products.urls", namespace="products")),
+    path("users/", include("users.urls", namespace="users")),
 ]
 
 # необходимо для локальной разработки
