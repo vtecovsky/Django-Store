@@ -11,8 +11,8 @@ class ProductCategory(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'Category'
-        verbose_name_plural = 'Categories'
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
 
 
 class Product(models.Model):
@@ -26,8 +26,8 @@ class Product(models.Model):
     """Отвечает за отображение в админ панели"""
 
     class Meta:
-        verbose_name = 'Product'
-        verbose_name_plural = 'Products'
+        verbose_name = "Product"
+        verbose_name_plural = "Products"
 
 
 # Расширяет функционал обычной корзины

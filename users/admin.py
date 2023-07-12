@@ -9,7 +9,7 @@ from users.models import User
 # Регистрация моделей для добавления данных через админ панель сайта
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('username',)
+    list_display = ("username",)
 
     # товары в корзине привязывается к пользователю
     # inlines = BasketAdmin

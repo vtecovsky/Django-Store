@@ -6,34 +6,37 @@ from django.views.generic.list import ListView
 
 from products.models import ProductCategory, Product, Basket
 
+from common.views import TitleMixin
+
 
 # функции = контроллеры = вьюхи
 
-class IndexView(TemplateView):
-    template_name = 'products/index.html'
+
+class IndexView(TitleMixin, TemplateView):
+    template_name = "products/index.html"
+    title = "Store"
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data()
-        context['title'] = 'Store'
         return context
 
 
-class ProductsListView(ListView):
+class ProductsListView(TitleMixin, ListView):
     model = Product
-    template_name = 'products/products.html'
+    template_name = "products/products.html"
     paginate_by = 3
-    context_object_name = 'products'
+    context_object_name = "products"
+    title = "Store - Каталог"
 
     def get_queryset(self):
         # queryset - список со всеми объектами
         queryset = super(ProductsListView, self).get_queryset()
-        category_id = self.kwargs.get('category_id')
+        category_id = self.kwargs.get("category_id")
         return queryset.filter(category_id=category_id) if category_id else queryset
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(ProductsListView, self).get_context_data()
-        context['title'] = 'Store - Каталог'
-        context['categories'] = ProductCategory.objects.all()
+        context["categories"] = ProductCategory.objects.all()
         return context
 
 
