@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from users.models import User, EmailVerification
+from users.models import EmailVerification, User
 
 
 # Регистрация моделей для добавления данных через админ панель сайта

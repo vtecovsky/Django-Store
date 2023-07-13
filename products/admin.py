@@ -1,5 +1,6 @@
 from django.contrib import admin
-from products.models import ProductCategory, Product, Basket
+
+from products.models import Basket, Product, ProductCategory
 
 # Регистрация моделей для добавления данных через админ панель сайта
 admin.site.register(ProductCategory)
