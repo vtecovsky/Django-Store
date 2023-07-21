@@ -38,7 +38,7 @@ class UserProfileView(TitleMixin, UpdateView):
     title = "Store - Личный кабинет"
 
     def get_success_url(self):
-        """Передает дополнительные параметры в url путь"""
+        """Pass additional params in the url"""
         return reverse_lazy("users:profile", args=(self.object.id,))
 
 

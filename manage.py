@@ -3,8 +3,6 @@
 import os
 import sys
 
-"""Главный файл в проекте"""
-
 
 def main():
     """Run administrative tasks."""
