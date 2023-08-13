@@ -14,7 +14,6 @@ import os
 from pathlib import Path
 import environ
 import django.core.mail.backends.console
-from dotenv import find_dotenv, load_dotenv
 
 env = environ.Env(
     # set casting, default value
@@ -76,6 +75,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     "allauth.socialaccount.providers.github",
     "django.contrib.humanize",
+    "django_extensions",
 ]
 
 MIDDLEWARE = [
