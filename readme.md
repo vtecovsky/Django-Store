@@ -3,6 +3,8 @@
 ## Features
 <ul>
     <li>Authentication, authorization, registration</li>
+    <li>Authentication via GitHub</li>
+    <li>Sending emails for password confirmation</li>
     <li>Shopping cart</li>
     <li>Making an order</li>
     <li>Admin panel for moderators</li>
