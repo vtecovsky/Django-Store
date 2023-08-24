@@ -116,6 +116,9 @@ WSGI_APPLICATION = "store.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
+        'OPTIONS': {
+            'options': '-c search_path=public'
+        },
         "NAME": env('DATABASE_NAME'),
         "USER": env('DATABASE_USER'),
         "PASSWORD": env('DATABASE_PASSWORD'),
@@ -178,7 +181,12 @@ USE_TZ = True
 
 # Static files directory
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [BASE_DIR / "static"]
+
+
+if not DEBUG:
+    STATIC_ROOT = BASE_DIR / 'static'
+else:
+    STATICFILES_DIRS = [BASE_DIR / "static"]
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
