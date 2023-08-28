@@ -12,24 +12,22 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
-import environ
+
 import django.core.mail.backends.console
+import environ
 
 env = environ.Env(
     # set casting, default value
     DEBUG=bool,
     DOMAIN_NAME=str,
     SECRET_KEY=str,
-
     REDIS_HOST=str,
     REDIS_PORT=str,
-
     DATABASE_NAME=str,
     DATABASE_USER=str,
     DATABASE_PASSWORD=str,
     DATABASE_HOST=str,
     DATABASE_PORT=str,
-
     EMAIL_HOST=str,
     EMAIL_PORT=int,
     EMAIL_HOST_USER=str,
@@ -41,34 +39,34 @@ env = environ.Env(
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Take environment variables from .env file
-environ.Env.read_env(os.path.join(BASE_DIR, '.env.local'))
+environ.Env.read_env(os.path.join(BASE_DIR, ".env.local"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
+DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = ["*"]
 
-DOMAIN_NAME = env('DOMAIN_NAME')
+DOMAIN_NAME = env("DOMAIN_NAME")
 
 # Application definition
 """Необходимо добавлять новые приложения в каталог ниже"""
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
     "django.contrib.auth",
+    "django.contrib.admin",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
-    "products",
     "users",
+    "products",
     "orders",
     "allauth",
     "allauth.account",
@@ -116,21 +114,19 @@ WSGI_APPLICATION = "store.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        'OPTIONS': {
-            'options': '-c search_path=public'
-        },
-        "NAME": env('DATABASE_NAME'),
-        "USER": env('DATABASE_USER'),
-        "PASSWORD": env('DATABASE_PASSWORD'),
-        "HOST": env('DATABASE_HOST'),
-        "PORT": env('DATABASE_PORT'),
+        "OPTIONS": {"options": "-c search_path=public"},
+        "NAME": env("DATABASE_NAME"),
+        "USER": env("DATABASE_USER"),
+        "PASSWORD": env("DATABASE_PASSWORD"),
+        "HOST": env("DATABASE_HOST"),
+        "PORT": env("DATABASE_PORT"),
     }
 }
 
 # Redis
 
-REDIS_HOST = env('REDIS_HOST')
-REDIS_PORT = env('REDIS_PORT')
+REDIS_HOST = env("REDIS_HOST")
+REDIS_PORT = env("REDIS_PORT")
 
 # Cache
 
@@ -182,9 +178,8 @@ USE_TZ = True
 # Static files directory
 STATIC_URL = "/static/"
 
-
 if not DEBUG:
-    STATIC_ROOT = BASE_DIR / 'static'
+    STATIC_ROOT = BASE_DIR / "static"
 else:
     STATICFILES_DIRS = [BASE_DIR / "static"]
 
@@ -203,11 +198,11 @@ LOGOUT_REDIRECT_URL = "/"
 
 # Sending emails
 
-EMAIL_HOST = env('EMAIL_HOST')
-EMAIL_PORT = env('EMAIL_PORT')
-EMAIL_HOST_USER = env('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-EMAIL_USE_SSL = env('EMAIL_USE_SSL')
+EMAIL_HOST = env("EMAIL_HOST")
+EMAIL_PORT = env("EMAIL_PORT")
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+EMAIL_USE_SSL = env("EMAIL_USE_SSL")
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 # OAuth
@@ -236,5 +231,5 @@ SOCIALACCOUNT_QUERY_EMAIL = True
 
 # Celery
 
-CELERY_BROKER_URL = F"redis://{REDIS_HOST}:{REDIS_PORT}"
+CELERY_BROKER_URL = f"redis://{REDIS_HOST}:{REDIS_PORT}"
 CELERY_RESULT_BACKEND = f"redis://{REDIS_HOST}:{REDIS_PORT}"
