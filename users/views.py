@@ -1,16 +1,14 @@
+from allauth.account.forms import ResetPasswordForm
 from django.contrib.auth.views import LoginView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, TemplateView, UpdateView
+from rest_auth.serializers import PasswordResetSerializer
 
 from common.views import TitleMixin
-from users.forms import (UserLoginForm,
-                         UserProfileForm, UserRegistrationForm)
+from users.forms import UserLoginForm, UserProfileForm, UserRegistrationForm
 from users.models import EmailVerification, User
-
-from rest_auth.serializers import PasswordResetSerializer
-from allauth.account.forms import ResetPasswordForm
 
 
 class UserRegistrationView(SuccessMessageMixin, TitleMixin, CreateView):
@@ -55,8 +53,8 @@ class EmailVerificationView(TitleMixin, TemplateView):
         user = User.objects.get(email=kwargs["email"])
         email_verifications = EmailVerification.objects.filter(user=user, code=code)
         if (
-                email_verifications.exists()
-                and not email_verifications.first().is_expired()
+            email_verifications.exists()
+            and not email_verifications.first().is_expired()
         ):
             user.is_verified_email = True
             user.save()

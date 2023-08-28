@@ -32,7 +32,7 @@ urlpatterns = [
     path("users/", include("users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     path("orders/", include("orders.urls", namespace="orders")),
-    path('', include('django.contrib.auth.urls'))
+    path("", include("django.contrib.auth.urls")),
 ]
 
 # необходимо для локальной разработки
