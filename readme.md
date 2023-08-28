@@ -22,8 +22,8 @@ All actions should be executed from the source directory of the project and only
 
 1. Firstly, create and activate a new virtual environment:
    ```bash
-   python3.11 -m venv ../venv
-   source ../venv/bin/activate
+   python -m venv <venv_name>
+   <venv_name>\Scripts\activate.bat
    ```
    
 2. Install packages:
