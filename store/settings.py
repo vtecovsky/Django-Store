@@ -55,7 +55,6 @@ ALLOWED_HOSTS = ["*"]
 DOMAIN_NAME = env("DOMAIN_NAME")
 
 # Application definition
-"""Необходимо добавлять новые приложения в каталог ниже"""
 
 INSTALLED_APPS = [
     "django.contrib.auth",
@@ -214,7 +213,7 @@ AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
-SITE_ID = 1
+SITE_ID = 3
 
 # Provider specific settings
 

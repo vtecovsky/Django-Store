@@ -1,6 +1,6 @@
 from django.contrib.auth.views import LoginView
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import HttpResponseRedirect, render
+from django.shortcuts import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, TemplateView, UpdateView
 
@@ -8,6 +8,9 @@ from common.views import TitleMixin
 from users.forms import (UserLoginForm,
                          UserProfileForm, UserRegistrationForm)
 from users.models import EmailVerification, User
+
+from rest_auth.serializers import PasswordResetSerializer
+from allauth.account.forms import ResetPasswordForm
 
 
 class UserRegistrationView(SuccessMessageMixin, TitleMixin, CreateView):
@@ -60,8 +63,3 @@ class EmailVerificationView(TitleMixin, TemplateView):
             return super(EmailVerificationView, self).get(request, *args, **kwargs)
         else:
             return HttpResponseRedirect(reverse("index"))
-
-
-
-
-
