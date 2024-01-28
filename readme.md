@@ -16,6 +16,7 @@
 - [Python](https://www.python.org/downloads/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Redis](https://redis.io/)
+- [Celery](https://docs.celeryq.dev/)
 
 ## Local Developing
 
